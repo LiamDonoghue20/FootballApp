@@ -1,0 +1,110 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root{
+
+    --red: #fa0b0b;
+    --orange: #faae0b;
+    --blue-dark: #0813affb;
+    --blue-light: #2778f3fb;
+    --yellow: #fcf804;
+    --green: #04fc19;
+    --purple: #8c04fc;
+    --white: #fff;
+    --grey-1: #EDEDED;
+    --shadow-dark: rgba(0,0,0,0.3);
+    --shadow-light: rgba(255,255,255,0.1);
+    --black: rgb(0, 0, 0);
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Verdana, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 1000px;
+    height: 80vh;
+    background-color: var(--shadow-light);
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px var(--shadow-dark);
+}
+.team-select-container {
+    width: 1000px;
+    height: 80vh;
+    background-color: var(--blue-dark);
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px var(--shadow-dark);
+}
+.upper-data{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+
+.backgroundImage img  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 50%;
+}
+
+.badge img{
+    position: relative;
+    top: 5em;
+    left: 26em;
+    width:20%;
+    height: 20%;
+
+}
+
+.team-name{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    top: 1.5em;
+    left: 6.4em;
+    font-size: 60px;
+    font-weight: bolder;
+    font-variant-caps: all-petite-caps;
+    color:white;
+    
+}
+
+.btn-primary{
+    position: absolute;
+    border-radius: 10%;
+    top: 1.5em;
+    left: 31.4em;
+    background-color: black;
+    color: white;
+    padding: 30px 64px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    
+}
+
+.btn-primary:hover{
+    background-color: #4CAF50;
+    
+}
+
