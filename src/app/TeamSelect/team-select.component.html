@@ -1,25 +1,33 @@
 <div class="container">
-    <div class="upper-data">
-    <div class="backgroundImage">
-      <img src="../assets/betisStadium.webp" >
+    <div class="upper-data-select">
+      <div class="select-team-text">
+
+      Please select a team to view their latest stats.
     </div>
-    
-        <div class="main-data">
-        
-          <div class="team-name">Real Betis</div>
-          <div class="badge">
-            <img src="../assets/Real_betis_logo.svg.png" >
-          </div>
-  
-          <div class="league-form">W W D D L L</div>
-        
-        </div>
+    <div class="la-liga-logo">
+    <img src="../../assets/laliga.png"
+    [style.width.px]='imageWidth'
+    [style.margin.px]='imageMargin'>
+  </div>
+   
     </div>
 
-    <div class="lower-data">
-        <div class="more-info-label">
-          More Information
-        </div>
+  <div class="team-grid">
+    <ng-container *ngFor="let team of teams">
+          <img 
+          class="team-badge"
+          [title]='team.teamName'
+          [src]='team.teamBadgeUrl'
+          [style.width.px]='imageWidth'
+          [style.margin.px]='imageMargin'
+          (click)="selectTeam( team.teamId,team.nextOpponentId, team.lastOpponentId, team.formRecord)"
+          >
+         
+     </ng-container>
+          
+
+    
+ 
       </div>
     
   </div>

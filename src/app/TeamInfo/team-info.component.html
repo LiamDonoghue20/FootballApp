@@ -1,28 +1,68 @@
-<div class="container">
-    <div class="upper-data">
-    <div class="backgroundImage">
-      <img src="../assets/betisStadium.webp" >
+
+    <div class="upper-data-info"
+
+    >
+    <div class="backgroundImage"*ngIf='currentTeam'>
+      <img [src]="currentTeam.stadiumImageUrl" >
     </div>
     
         <div class="main-data">
           <button class='btn btn-primary'
-          (click)='selecTeamScreen()'>
+          (click)='selectTeamScreen()'>
           Select Team
           </button>
-          <div class="team-name">Real Betis</div>
+      
           <div class="badge">
-            <img src="../assets/Real_betis_logo.svg.png" >
+            <img [src]='currentTeam?.teamBadgeUrl' >
           </div>
-  
-          <div class="league-form">W W D D L L</div>
-        
+          <div class="team-name" *ngIf='currentTeam' >{{currentTeam.teamName}}</div>
+     
         </div>
     </div>
-  </div>
-     
+
+         
     <div class="lower-data">
-      <div class="more-info-label">
-        More Information
+   
+      <div class="team-info-grid">
+      <div class="info-block">
+     
+    
+          <div class="info-block-value">
+            Last Fixture
+            <img [src]="lastOpponent?.teamBadgeUrl"
+            [style.width.px]='imageWidth'
+            [style.margin.px]='imageMargin'>
+            <div class="score-value-win" *ngIf="lastResult=='W'">{{currentTeam?.lastFixtureScore}} W</div>
+            <div class="score-value-loss" *ngIf="lastResult=='L'">{{currentTeam?.lastFixtureScore}} L</div>
+            <div class="score-value-draw" *ngIf="lastResult=='D'">{{currentTeam?.lastFixtureScore}} D</div>
+          </div>
+      </div>
+
+      <div class="info-block">
+      
+          <div class="info-block-value">
+            Form
+      
+            <div class="form-value">{{currentTeam?.formRecord}}</div>
+          </div>
+      </div>
+
+      <div class="info-block">
+          <div class="info-block-value">
+            Next Fixture
+            <img [src]="nextOpponent?.teamBadgeUrl"
+            [style.width.px]='imageWidth'
+            [style.margin.px]='imageMargin'>
+          </div>
+      </div>
+
+      <div class="info-block">
+          <div class="info-block-value">
+            League <br>
+            Position
+            <div class="league-position">{{currentTeam?.leaguePosition}}</div>
+          </div>
       </div>
     </div>
-  
+      </div>
+ 

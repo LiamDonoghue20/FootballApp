@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Component, EventEmitter,  OnDestroy, OnInit, Output } from "@angular/core";
 import { ITeam } from "./team";
 import { TeamService } from "../_services/team.service";
 import { Subscription } from "rxjs";
@@ -10,16 +9,22 @@ import { Subscription } from "rxjs";
 })
 
 export class TeamSelectComponent implements OnInit, OnDestroy {
-    imageWidth: number = 200;
-    imageMargin: number = 8;
+    imageWidth: number = 150;
+    imageMargin: number = 10;
     teams: ITeam[] = [];
     errorMessage: string = '';
+    teamSelected: boolean = false;
+
 
     sub!: Subscription
 
+    @Output() teamSelectedBoolOutput:EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() teamIdOutput:EventEmitter<number> = new EventEmitter<number>();
+    @Output() lastOpponentId:EventEmitter<number> = new EventEmitter<number>();
+    @Output() nextOpponentId:EventEmitter<number> = new EventEmitter<number>();
+    @Output() teamFormOutput:EventEmitter<string> = new EventEmitter<string>();
 
-    constructor(private route: ActivatedRoute,
-                private router: Router,
+    constructor(
                 private teamService: TeamService){}
 
     ngOnInit(): void {
@@ -33,6 +38,15 @@ export class TeamSelectComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         
+    }
+
+    selectTeam(teamId: number,  nextOpponentId: number, lastOpponentId: number, teamForm: string ){
+        this.teamIdOutput.emit(teamId)
+        this.nextOpponentId.emit(nextOpponentId)
+        this.lastOpponentId.emit(lastOpponentId)
+        this.teamFormOutput.emit(teamForm)
+        this.teamSelectedBoolOutput.emit(true)
+      
     }
 
  

@@ -1,0 +1,14 @@
+<div class="container">
+<team-info *ngIf="teamSelectedBoolean"
+ [teamSelectedId]="teamSelectedId"
+ [lastOpponentId]="lastOpponentId"
+ [nextOpponentId]="nextOpponentId"
+ [teamForm]="teamForm"
+ (teamSelectedInput)="setTeamSelectedBoolean($event)"></team-info>
+<team-select *ngIf="!teamSelectedBoolean" (teamIdOutput)="setTeamId($event)"
+                                         (teamFormOutput)="setTeamForm($event)"
+                                          (nextOpponentId)="setNextOpponentId($event)"
+                                          (lastOpponentId)="setLastOpponentId($event)"
+                                          (teamSelectedBoolOutput)="setTeamSelectedBoolean($event)"></team-select>
+</div>
+ 

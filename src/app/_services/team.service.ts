@@ -9,21 +9,31 @@ import { catchError, tap, map} from "rxjs/operators";
 @Injectable({
     providedIn: 'root'
 })
-
 export class TeamService {
-    private teamDataUrl = "src\\app\\data\\team-data.json"
+    private teamDataUrl = "../assets/team-data.json"
 
     constructor(private http: HttpClient){
 
     }
 
     getTeams(): Observable<ITeam[]>{
+        console.log("The location is: "+this.teamDataUrl)
         return this.http.get<ITeam[]>(this.teamDataUrl).pipe(
-            tap(data => console.log('All', JSON.stringify(data))),
+        
             catchError(this.handleError)
         );
 
     }
+
+    getTeam(id: number) : Observable<ITeam | undefined> {
+        return this.getTeams()
+                .pipe(
+                    //find a product that matches the product id
+                    map((teams: ITeam[]) => teams.find(team => team.teamId == id))
+                );
+
+    }
+
 
     private handleError(err: HttpErrorResponse){
         let errorMessage = '';
